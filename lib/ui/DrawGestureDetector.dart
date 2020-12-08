@@ -13,10 +13,8 @@ class DrawGestureDetector extends StatefulWidget {
   const DrawGestureDetector({
     Key key,
     @required this.addMarker,
-    // this.callback
   }) : super(key: key);
 
-  // final StringCallback callback;
   final bool addMarker;
 
   @override
@@ -24,7 +22,6 @@ class DrawGestureDetector extends StatefulWidget {
 }
 
 class _DrawGestureDetectorState extends State<DrawGestureDetector> {
-  // double _posX, _posY;
 
   @override
   Widget build(BuildContext context) {
@@ -140,10 +137,7 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
             children: [
               Image.file(File(drawing.thumbnail)),
               for (var i = 0; i < drawing.markers.length; i++)
-                // for (var marker in drawing.markers)
                 Positioned(
-                    // height: 20,
-                    // width: 20,
                     top: drawing.markers[i].posY - 20,
                     left: drawing.markers[i].posX - 10,
                     child: GestureDetector(
@@ -163,7 +157,7 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
         
         )
         : InteractiveViewer(
-            panEnabled: true, // Set it to false to prevent panning.
+            panEnabled: true,
             boundaryMargin: EdgeInsets.all(80),
             minScale: 0.5,
             maxScale: 4,
@@ -172,10 +166,7 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
               children: [
                 Image.file(File(drawing.thumbnail)),
                 for (var i = 0; i < drawing.markers.length; i++)
-                  // for (var marker in drawing.markers)
                   Positioned(
-                      // height: 20,
-                      // width: 20,
                       top: drawing.markers[i].posY - 20,
                       left: drawing.markers[i].posX - 10,
                       child: GestureDetector(

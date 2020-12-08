@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:marker/redux/actions/action.dart';
-// import 'package:thoughts/redux/actions/action.dart';
 
 class NavigatorPushAction extends AppAction{
 

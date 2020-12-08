@@ -15,10 +15,8 @@ class DrawingPage extends StatefulWidget {
 }
 
 class _DrawingPageState extends State<DrawingPage> {
-  // double _posX, _posY;
   bool addMarker = false;
-  // TextEditingController _markerNameController = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Map<String, dynamic>>(
@@ -108,10 +106,6 @@ class _DrawingPageState extends State<DrawingPage> {
                                   subtitle: Text(
                                     timeago.format(drawing.markers[index].time)
                                   )
-                                    // DateFormat('yyyy-MM-dd – kk:mm').format(drawings[index].time).toString())
-                                      // drawing.markers[index].time.toString()),
-                                  // trailing: Text(
-                                  //     drawing.markers[index].posY.toString()),
                                 );
                               })),
                 )

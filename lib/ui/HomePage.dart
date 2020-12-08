@@ -75,7 +75,6 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             image: DecorationImage(image: FileImage(_image,),fit: BoxFit.cover,alignment: Alignment.center)
                           ),
-                          // child: Text('Select Drawing',style: TextStyle(color: Colors.white),),
                         )
                          :  
                         Container(
@@ -96,34 +95,26 @@ class _HomePageState extends State<HomePage> {
                           controller: _nameController,
                           decoration: InputDecoration(
                             filled: true,
-                            // fillColor: Colors.white,
                             errorStyle: TextStyle(color: Colors.black),
                             hintText: "Drawing's Name",
                             contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(35.0)),
-                              // borderSide: BorderSide(width: 2,color: Colors.white)
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(35.0)),
-                              // borderSide: BorderSide(width: 2,color: Colors.white)
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(35.0)),
-                              // borderSide: BorderSide(width: 2,color: Colors.white)
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(35.0)),
-                              // borderSide: BorderSide(width: 1,color: Colors.white)
                             ),
                             focusedErrorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(35.0)),
                               borderSide: BorderSide(width: 1,color: Colors.white)
                             ),
-                            // focusedErrorBorder: ,
                             floatingLabelBehavior: FloatingLabelBehavior.always,
-                            // focusColor: Colors.white,
-                            
                           ),
                           validator: (value){
                             if (value.isEmpty) {
@@ -142,7 +133,6 @@ class _HomePageState extends State<HomePage> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  // title: Text("My title"),
                                   content: Text("drawing needs a name"),
                                   actions: [
                                     FlatButton(
@@ -161,7 +151,6 @@ class _HomePageState extends State<HomePage> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  // title: Text("My title"),
                                   content: Text("need to select a drawing"),
                                   actions: [
                                     FlatButton(
@@ -216,7 +205,6 @@ class _HomePageState extends State<HomePage> {
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Text(DateFormat('yyyy-MM-dd – kk:mm').format(drawings[index].time).toString()),
                             Text(timeago.format(drawings[index].time)),
                             Text('Markers : ' + drawings[index].markers.length.toString()),
                           ],

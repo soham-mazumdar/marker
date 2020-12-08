@@ -9,7 +9,6 @@ import 'package:marker/redux/middleware/middleware.dart';
 import 'package:marker/redux/models/app_state.dart';
 import 'package:marker/redux/reducers/base_reducer.dart';
 import 'package:marker/redux/routes/routes.dart';
-import 'package:marker/redux/services/WPService.dart';
 import 'package:marker/util/ui_constants.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';

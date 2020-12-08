@@ -3,11 +3,9 @@ import 'dart:convert';
 import 'package:marker/redux/actions/ThoughtAction.dart';
 import 'package:marker/redux/models/Drawing.dart';
 import 'package:marker/redux/models/Marker.dart';
-import 'package:path/path.dart';
 import 'package:redux/redux.dart';
 import 'package:marker/redux/actions/action.dart';
 import 'package:marker/redux/models/app_state.dart';
-import 'package:marker/redux/services/WPService.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -28,14 +26,6 @@ _init(Database db)
 {
   return (store, action, next) async {
     
-    // final Future<Database> database = openDatabase(
-    //   join(await getDatabasesPath(), 'draw.db'),
-    //   version: 1,
-    // );
-    
-
-    // final Database db = await database;
-
     
     await db.query(
       'draw',
@@ -57,18 +47,6 @@ _addDrawingAction(Database db)
 {
   return (store, action, next) async {
     
-    // final Future<Database> database = openDatabase(
-    //   join(await getDatabasesPath(), 'draw.db'),
-    //   // onCreate: (db, version) {
-    //   //   return db.execute(
-    //   //     "CREATE TABLE draw(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, time TEXT, thumbnail TEXT, markers TEXT)",
-    //   //   );
-    //   // },
-    //   version: 1,
-    // );
-
-    // final Database db = await database;
-
     Drawing drawing = Drawing(name: action.name, thumbnail: action.file.path, time: DateTime.now(), markers: []);
 
     
@@ -96,20 +74,6 @@ _addMarkerAction(Database db)
 {
   return (store, action, next) async {
     
-    
-    final Future<Database> database = openDatabase(
-      join(await getDatabasesPath(), 'draw.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE draw(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, time TEXT, thumbnail TEXT, markers TEXT)",
-        );
-      },
-      version: 1,
-    );
-
-    
-
-    final Database db = await database;
     List<Marker> _markers = [];
     action.drawing.markers.forEach((element) {
       _markers.add(element);

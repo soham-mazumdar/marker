@@ -24,7 +24,6 @@ class AddDrawingAction extends AppAction{
 class SaveDrawingAction extends AppAction{
 
   final Drawing drawing;
-  // final int id;  
   SaveDrawingAction(this.drawing);
 
   @override String toString() => "IsLoadingAction{$drawing}";
@@ -33,7 +32,6 @@ class SaveDrawingAction extends AppAction{
 class SaveAllDrawingsAction extends AppAction{
 
   final List<Drawing> drawings;
-  // final int id;  
   SaveAllDrawingsAction(this.drawings);
 
   @override String toString() => "IsLoadingAction{$drawings}";

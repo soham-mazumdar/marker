@@ -25,7 +25,6 @@ class Drawing {
         _markers.add(Marker.fromJson(element));
         
     });
-    // print('likes : ' + likes);
     return Drawing(
       id: json['id'],
       name: json['name'],
@@ -41,7 +40,7 @@ class Drawing {
       'name': name,
       'time': time.toIso8601String(),
       'thumbnail': thumbnail,
-      "markers": jsonEncode(markers)// markers.asMap() // != null ? markers.asMap() : null
+      "markers": jsonEncode(markers)
     };
   }
   
