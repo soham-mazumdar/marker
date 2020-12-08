@@ -59,8 +59,11 @@ class _DrawingPageState extends State<DrawingPage> {
                 Container(
                   child: Column(
                     children: [
-                      DrawGestureDetector(
-                        addMarker: addMarker,
+                      Container(
+                        height: 200,
+                        child: DrawGestureDetector(
+                          addMarker: addMarker,
+                        ),
                       ),
                       Container(
                         color: Colors.white,

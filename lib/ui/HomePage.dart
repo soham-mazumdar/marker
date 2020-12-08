@@ -69,12 +69,21 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         child: _image != null ? 
-                        Image.file(_image) :  
+                        Container(
+                          height: 200,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: FileImage(_image,),fit: BoxFit.cover,alignment: Alignment.center)
+                          ),
+                          // child: Text('Select Drawing',style: TextStyle(color: Colors.white),),
+                        )
+                         :  
                         Container(
                           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                           margin: EdgeInsets.only(top: 20),
                           decoration: BoxDecoration(
-                            color: Colors.pink
+                            color: Colors.pink,
+
                           ),
                           child: Text('Select Drawing',style: TextStyle(color: Colors.white),),
                         ),

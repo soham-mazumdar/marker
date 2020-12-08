@@ -7,6 +7,7 @@ import 'package:marker/redux/actions/navigator_actions.dart';
 import 'package:marker/redux/models/Drawing.dart';
 import 'package:marker/redux/models/Marker.dart';
 import 'package:marker/redux/models/app_state.dart';
+import 'package:marker/util/ui_constants.dart';
 
 class DrawGestureDetector extends StatefulWidget {
   const DrawGestureDetector({
@@ -57,7 +58,8 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
       final _formKey = GlobalKey<FormState>();
       TextEditingController _markerNameController = TextEditingController();
 
-      return GestureDetector(
+      return widget.addMarker ?
+        GestureDetector(
           onTapDown: (TapDownDetails details) {
             if (widget.addMarker) {
               final RenderBox referenceBox = context.findRenderObject();
@@ -134,7 +136,33 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
                   });
             }
           },
-          child: InteractiveViewer(
+          child: Stack(
+            children: [
+              Image.file(File(drawing.thumbnail)),
+              for (var i = 0; i < drawing.markers.length; i++)
+                // for (var marker in drawing.markers)
+                Positioned(
+                    // height: 20,
+                    // width: 20,
+                    top: drawing.markers[i].posY - 20,
+                    left: drawing.markers[i].posX - 10,
+                    child: GestureDetector(
+                      onTap: () {
+                        selectMarker(i);
+                      },
+                      child: Container(
+                          width: 20,
+                          height: 20,
+                          child: selectedMarker == i
+                              ? Icon(Icons.arrow_downward_outlined,color: AppColors.primary,size: 20,)
+                              : Icon(Icons.arrow_downward_outlined,color: Colors.blue,size: 20,)
+                      )
+                    )),
+            ],
+          )
+        
+        )
+        : InteractiveViewer(
             panEnabled: true, // Set it to false to prevent panning.
             boundaryMargin: EdgeInsets.all(80),
             minScale: 0.5,
@@ -158,12 +186,15 @@ class _DrawGestureDetectorState extends State<DrawGestureDetector> {
                             width: 20,
                             height: 20,
                             child: selectedMarker == i
-                                ? Image.asset('assets/1.png')
-                                : Image.asset('assets/2.png')),
+                                ? Icon(Icons.arrow_downward_outlined,color: AppColors.primary,size: 20,)
+                              : Icon(Icons.arrow_downward_outlined,color: Colors.blue,size: 20,)
+                        ),
                       )),
               ],
             ),
-          ));
+          );
+        
+        
     });
   }
 }
